@@ -1,0 +1,19 @@
+{
+  "name": "jm-studio-backend",
+  "version": "1.0.0",
+  "description": "This is a backend for the jm studio",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "nodemon src/index.js"
+  },
+  "author": "Arpan Halder",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.3",
+    "nodemon": "^3.1.4",
+    "uuid": "^10.0.0"
+  }
+}
