@@ -13,10 +13,11 @@ app.use(cookieParser())
 
 
 //routes import
-
+import adminRouter from "./routes/admin.routes.js"
+import { path } from "./global/path.js"
 
 //routes declaration
-
+app.use(`${path.api}/admin`, adminRouter);
 
 
 export { app }
