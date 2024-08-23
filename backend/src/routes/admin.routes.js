@@ -1,9 +1,27 @@
 import { Router } from "express";
-import { registerAdmin } from "../controllers/admin.js";
+import { 
+    registerAdmin, 
+    loginAdmin, 
+    updateAdmin, 
+    deleteAdmin, 
+    getAdminDetails 
+} from "../controllers/admin.js";
 
-const router =  Router()
+const router = Router();
 
-router.route("/register").post(registerAdmin)
+// Route to register a new admin
+router.route("/register").post(registerAdmin);
 
+// Route to login an admin
+router.route("/login").post(loginAdmin);
 
-export default router
+// Route to update admin details (adminId is a URL parameter)
+router.route("/:adminId").put(updateAdmin);
+
+// Route to delete an admin (adminId is a URL parameter)
+router.route("/:adminId").delete(deleteAdmin);
+
+// Route to get admin details (adminId is a URL parameter)
+router.route("/:adminId").get(getAdminDetails);
+
+export default router;

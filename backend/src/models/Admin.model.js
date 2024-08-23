@@ -4,16 +4,38 @@ import jwt from "jsonwebtoken";
 
 const adminSchema = new Schema(
     {
-        id: { type: Number, required: true, unique: true },
-        name: { type: String, required: true },
-        mobile: { type: String, required: true },
-        email: { type: String, required: true, unique: true, lowercase: true, trim: true },
-        password: { type: String, required: true },
-        isActive: { type: Boolean, default: true },
-        access: { type: String, required: true },
-        accessToken: { type: String },
-        createdAt: { type: Date, default: Date.now },
-        updatedAt: { type: Date, default: Date.now }
+        name: {
+            type: String,
+            required: true,
+        },
+        mobile: {
+            type: String,
+            required: true,
+            unique: true,
+            trim: true,
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            lowercase: true,
+            trim: true,
+        },
+        password: {
+            type: String,
+            required: true,
+        },
+        isActive: {
+            type: Boolean,
+            default: true,
+        },
+        access: {
+            type: String,
+            required: true,
+        },
+        accessToken: {
+            type: String,
+        },
     },
     { timestamps: true }
 );
@@ -33,7 +55,7 @@ adminSchema.methods.isPasswordCorrect = async function (password) {
 // Method to generate JWT access token
 adminSchema.methods.generateAccessToken = function () {
     return jwt.sign(
-        { _id: this._id, email: this.email, name: this.name },
+        { _id: this._id, mobile: this.mobile, name: this.name },
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: process.env.ACCESS_TOKEN_EXPIRY }
     );
