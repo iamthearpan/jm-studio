@@ -60,7 +60,9 @@ const loginAdmin = asyncHandler(async (req, res) => {
     // Generate JWT token
     const accessToken = admin.generateAccessToken();
 
-    res.status(200).json(
+    res
+    .status(200)
+    .json(
         new ApiResponse(200, { accessToken }, "Login successful.")
     );
 });
